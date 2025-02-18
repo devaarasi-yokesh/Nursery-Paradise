@@ -5,17 +5,37 @@
 }
 body{
   margin: 2rem;
+  background-color: #7c2828;
 }
+
+.navigationBar{
+  border-bottom: 8px double black;
+}
+.navigationBar ul{
+  list-style: none;
+  text-align: center;
+}
+.navigationBar li{
+  display: inline-block;
+  padding: 2rem;
+  color: white;
+  font-size: 3rem;
+  margin: 2rem;
+  cursor: pointer;
+}
+
+
+
+
 
 .landingPageContainer{
   display: flex;
   margin: 0rem;
   justify-content:center ;
-  height: 100vh;
-  background-color: #89d1ad;
+  height: 75vh;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #872d2d;
+  color: white;
 }
 
 .header{
@@ -25,23 +45,97 @@ body{
   align-content: center;
   justify-content:inherit;
 }
-
+.header h1,p{
+  padding: 1rem;
+}
 /* .header h1,p,button{
   margin-bottom: 5.5rem;
 } */
 .header h1{
-  width: 260px;
   text-align: center;
+  font-size: 3rem;
 }
 .about{
-  
   align-content: center;
-  padding: 1rem;
-  max-width: 300px;
-  text-align: justify;
+  padding: 1.8rem;
+  max-width: 600px;
+  font-size: 1.2rem;
 }
 
+.about p{
+  text-align: justify;
+}
 .linkToProductPage{
   color:#7c2828;
   padding: 1rem;
+}
+
+.productContent{
+  margin:1rem 3rem;
+}
+.plantContainer img{
+  width: 300px;
+
+}
+
+.plantContainer{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  flex-wrap: wrap;
+}
+
+.plantContainer > img,p, h3,input,button{
+  margin: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.plantContainer button,input{
+  border-radius: 8px;
+}
+.partOnePlants{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap; 
+  margin-top: 3rem;
+}
+.partOnePlants > div{
+  margin: 2rem;
+}
+
+.sideHeading{
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-top: 3rem;
+}
+
+.cartPage h1{
+  color: white;
+  text-align: center;
+  margin-top:3rem;
+}
+.item{
+  display: flex;
+  align-content: space-between;
+  margin-top: 3rem;
+}
+.item > h4,p,img{
+  margin: 2rem 5rem;
+  align-content: space-around;
+}
+.item p{
+  font-size: 1.3rem;
+}
+.item h4{
+font-size: 1.5rem;
+width: 2rem;
+}
+.item img{
+  width: 150px;
+}
+
+.total{
+  font-size: 3rem;
 }
