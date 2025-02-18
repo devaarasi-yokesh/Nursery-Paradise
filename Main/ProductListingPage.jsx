@@ -1,15 +1,24 @@
 import { useState } from "react"
 
-function Plant(props){
+function Plant({plant, addToCart}){
     
+    const [quantity, setQuantity] = useState(1);
+
+   function handleAddToCart(){
+
+    if(quantity > 0){
+        addToCart(plant, quantity);
+        setQuantity(1);
+    }
+   }
     return(
         <>
         <div className="plantContainer">
-        <img src={props.img} alt="" />
-        <p>{props.name}</p>
-        <p>{props.about}</p>
-        <p>{props.cost}</p>
-        <button className="addButton" onClick={()=> {props.setCount((prev)=> prev+1); props.setSelectedPlants([...[props.cost,props.name,props.img]]);}}>Add to Cart</button>
+        <img src={plant.img} alt="" />
+        <h3>{plant.name}</h3>
+        <p>{plant.about}</p>
+        <input type="number" min='1' value={quantity} onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))} />
+        <button className="addButton" onClick={handleAddToCart}>Add to Cart</button>
         </div>
         </>
     )
@@ -20,42 +29,37 @@ function Plant(props){
 
 
 
-export default function ProductListingPage(props){
+export default function ProductListingPage({addToCart, selectedPlants}){
 
-    const plants = [['./assets/plant1.jpg',"SpiderPlant","Purifies the air in a efficient way",8],['./assets/plant2.jpg',"SpiderPlant","Purifies the air in a efficient way",8],['./assets/plant3.jpg',"SpiderPlant","Purifies the air in a efficient way",8],['./assets/plant4.jpg',"SpiderPlant","Purifies the air in a efficient way",8]]
-    // function createId(){
-    //     let id = Math.floor(Math.random() * 89);
-    //     return id
-    // }
+   
     return(
         <>
-        <div className="productHeader">
-            <nav><ul><li>Home</li> <li>Cart</li></ul></nav>
-            <img src="./assets/shopping-cart.svg" alt="cart_icon" />
-            <p>{props.count}</p>
-        </div>
+       
         <div className="productContent">
+        <h2 className="sideHeading">Indoor Plants</h2>
             <section className="partOnePlants">
                         {
-                plants.map((data) => {
-                    return <Plant  className="partOne" img={data[0]} name={data[1]}  about={data[2]} cost={data[3]} setCount={props.setCount} setSelectedPlants={props.setSelectedPlants}/>
+                selectedPlants.map((plant) => {
+                    return (
+                        <>
+                           <Plant addToCart={addToCart} plant={plant}/>
+                        </>
+                    )
                 })
             }
             </section>
-            <section className="partTwoPlants">
+            <h2 className="sideHeading">Outdoor Plants</h2>
+            <section className="partOnePlants">
                         {
-                plants.map((data) => {
-                    return <Plant className="partTwo" img={data[0]} name={data[1]}  about={data[2]} cost={data[3]} setCount={props.setCount}/>
+                selectedPlants.map((plant) => {
+                    return (
+                        <>
+                           <Plant addToCart={addToCart} plant={plant}/>
+                        </>
+                    )
                 })
             }
-            </section>
-            <section className="partThreePlants">
-                        {
-                plants.map((data) => {
-                    return <Plant  className="partThree" img={data[0]} name={data[1]}  about={data[2]} cost={data[3]} setCount={props.setCount}/>
-                })
-            }
-            </section>
+            </section> 
             
         </div>
         </>
